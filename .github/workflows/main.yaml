@@ -1,4 +1,4 @@
-name: "workflow principal de cicd"
+name: Main CI/CD workflow
 
 on:
   push:
@@ -6,20 +6,24 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout du code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup de Java
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build et test de l'application
+      - name: Build
         shell: bash
         run: |
           ./gradlew build
+
+      - name: test
+        shell: bash
+        run: |
+          ./gradlew test
