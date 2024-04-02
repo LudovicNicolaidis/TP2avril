@@ -20,5 +20,6 @@ jobs:
           distribution: 'adopt'
 
       - name: Build et test de l'application
+        shell: bash
         run: |
           ./gradlew build
